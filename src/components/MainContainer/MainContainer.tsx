@@ -1,6 +1,7 @@
 import React, {FC} from 'react';
 import Head from "next/head";
 import {IMainContainerTypes} from "./MainContainer.types";
+import styles from '../../../styles/MainContainer.module.css'
 
 const MainContainer: FC<IMainContainerTypes> = ({ children, keywords }) => {
     return (
@@ -8,11 +9,12 @@ const MainContainer: FC<IMainContainerTypes> = ({ children, keywords }) => {
             <Head>
                 <title>PFE</title>
                 <meta name="keywords" content={"freelance, remote-work, first-project-next" + keywords}/>
-                <link rel="icon" href="/favicon.ico" />
+                <link rel="icon" href="/public/favicon.ico" />
             </Head>
-            <div>
+            <div className={styles.MainContainer}>
                 {children}
             </div>
+
         </>
     );
 };

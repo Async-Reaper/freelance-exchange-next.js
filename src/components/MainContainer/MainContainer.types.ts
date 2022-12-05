@@ -1,4 +1,4 @@
-import {DetailedHTMLProps, MetaHTMLAttributes, ReactNode} from "react";
+import {ReactNode} from "react";
 
 export interface IMainContainerTypes {
     children: ReactNode;

@@ -1,25 +1,24 @@
-import MainContainer from "../src/components/MainContainer/MainContainer";
+import MainContainer from "../src/components/mainContainer/MainContainer";
 import {collection, getDocs} from "@firebase/firestore";
 import {db} from "../firebase";
+import {IOrder} from "../src/models/IOrder";
+import OrderItem from "../src/components/orders/orderItem/OrderItem";
 
-export default function Home({ orders }: any) {
-    console.log(orders)
-    // getData()
-  return (
+interface  Props {
+    orders: IOrder[]
+}
+
+export default function Home( {orders}: Props) {
+    return (
     <MainContainer>
-      <h2>create</h2>
+        <div>
+            {orders && orders.map(order =>
+                <OrderItem key={order.id} order={order}/>
+            )}
+        </div>
     </MainContainer>
   )
 }
-
-// async function getData() {
-//     const orders: any[] = [];
-//     const querySnapshot = await getDocs(collection(db, "orders"));
-//     querySnapshot.forEach((doc) => {
-//         orders.push(doc.data());
-//     });
-//     console.log(orders)
-// }
 
 export async function getServerSideProps(context: any) {
     try {

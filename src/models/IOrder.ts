@@ -1,0 +1,9 @@
+export interface IOrder {
+    id: number;
+    name: string;
+    description: string;
+    creator: string;
+    price: number;
+    date_create: string;
+    date_finish: string;
+}

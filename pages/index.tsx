@@ -1,6 +1,6 @@
 import MainContainer from "../src/components/mainContainer/MainContainer";
 import {collection, getDocs} from "@firebase/firestore";
-import {db} from "../firebase";
+import {db} from "../src/firebase";
 import {IOrder} from "../src/models/IOrder";
 import OrderItem from "../src/components/orders/orderItem/OrderItem";
 
@@ -20,7 +20,7 @@ export default function Home( {orders}: Props) {
   )
 }
 
-export async function getServerSideProps(context: any) {
+export async function getServerSideProps() {
     try {
         const orders: any[] = [];
         const querySnapshot = await getDocs(collection(db, "orders"));

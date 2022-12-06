@@ -1,26 +1,27 @@
 import React, {useState} from "react";
 import {ILogin} from "../../src/models/ILogin";
+import {loginUser} from "../../src/services/api/loginUser";
 
 export default function Login() {
-    const [name, setName] = useState<string>('')
+    const [email, setEmail] = useState<string>('')
     const [password, setPassword] = useState<string>('')
 
     const loginUserData: ILogin = {
-        id: Date.now(),
-        name,
+        email,
         password
     }
-    const loginUser = (e: React.FormEvent<HTMLFormElement>) => {
-        e.preventDefault();
 
+    const handleLogin = (e: React.FormEvent<HTMLFormElement>) => {
+        e.preventDefault();
+        loginUser(loginUserData)
     }
 
     return (
         <div>
-            <form onSubmit={(e: React.FormEvent<HTMLFormElement>) => loginUser(e)}>
-                <input value={name} onChange={(e: React.ChangeEvent<HTMLInputElement>) => setName(e.target.value)} />
+            <form onSubmit={(e) => handleLogin(e)}>
+                <input value={email} onChange={(e: React.ChangeEvent<HTMLInputElement>) => setEmail(e.target.value)} />
                 <input value={password} onChange={(e: React.ChangeEvent<HTMLInputElement>) => setPassword(e.target.value)}/>
-                <button>Войти</button>
+                <button type="submit">Войти</button>
             </form>
         </div>
     );

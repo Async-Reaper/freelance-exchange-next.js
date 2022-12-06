@@ -1,7 +1,7 @@
 import React, {useState} from "react";
 import {ILogin} from "../../src/models/ILogin";
 
-export default function Index() {
+export default function Login() {
     const [name, setName] = useState<string>('')
     const [password, setPassword] = useState<string>('')
 

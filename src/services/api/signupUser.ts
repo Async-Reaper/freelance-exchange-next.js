@@ -1,7 +1,7 @@
 import {ISignup} from "../../models/ISignup";
 import {AppDispatch} from "../../store/store";
 import {signupError, signupFetch, signupSuccess} from "../../store/slices/signupSlice/signupSlice.slice";
-import {createUserWithEmailAndPassword, getAuth, updateProfile} from "@firebase/auth";
+import {createUserWithEmailAndPassword, getAuth} from "@firebase/auth";
 import {doc, setDoc} from "@firebase/firestore";
 import {db} from "../../firebase";
 

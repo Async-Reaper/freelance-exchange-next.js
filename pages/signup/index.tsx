@@ -2,6 +2,8 @@ import React, {useState} from "react";
 import {useTypeDispatch} from "../../src/hooks/useTypeDispatch";
 import {ISignup} from "../../src/models/ISignup";
 import {signupUser} from "../../src/services/api/signupUser";
+import FormTemplate from "../../src/components/template/formTemplate/FormTemplate";
+import MainContainer from "../../src/components/mainContainer/MainContainer";
 
 const Index = () => {
     const [emailSignup, setEmailSignup] = useState<string>('');
@@ -28,8 +30,8 @@ const Index = () => {
     }
 
     return (
-        <div>
-            <form onSubmit={(e) => handleSignup(e)}>
+        <MainContainer>
+            <FormTemplate onSubmit={(e) => handleSignup(e)}>
                 <input
                    value={emailSignup}
                    onChange={(e: React.ChangeEvent<HTMLInputElement>) => setEmailSignup(e.target.value)}
@@ -55,8 +57,8 @@ const Index = () => {
                    onChange={(e: React.ChangeEvent<HTMLInputElement>) => setRepeatPasswordSignup(e.target.value)}
                 />
                 <button type="submit">Зарегистрироваться</button>
-            </form>
-        </div>
+            </FormTemplate>
+        </MainContainer>
     );
 };
 

@@ -1,9 +1,9 @@
 import React from 'react';
 import Head from "next/head";
 import {IMainContainerTypes} from "./MainContainer.types";
-import styles from '../../../styles/MainContainer.module.css'
+import styles from './MainContainer.module.css'
 import {NextPage} from "next";
-import Header from "../UI/Header/HeaderAll/Header";
+import HeaderAll from "../UI/Header/HeaderAll/HeaderAll";
 
 const MainContainer: NextPage<IMainContainerTypes> = ({ children, keywords }) => {
     return (
@@ -13,8 +13,8 @@ const MainContainer: NextPage<IMainContainerTypes> = ({ children, keywords }) =>
                 <meta name="keywords" content={"freelance, remote-work, first-project-next" + keywords}/>
                 <link rel="icon" href="/public/favicon.ico" />
             </Head>
-            <Header />
             <div className={styles.MainContainer}>
+                <HeaderAll />
                 {children}
             </div>
 

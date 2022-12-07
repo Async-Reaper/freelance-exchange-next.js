@@ -1,7 +1,7 @@
 import React, {useState} from "react";
 import {useTypeDispatch} from "../../src/hooks/useTypeDispatch";
-import {loginUser} from "../../src/services/api/loginUser";
 import {ISignup} from "../../src/models/ISignup";
+import {signupUser} from "../../src/services/api/signupUser";
 
 const Index = () => {
     const [emailSignup, setEmailSignup] = useState<string>('');
@@ -18,12 +18,11 @@ const Index = () => {
         surname,
         age,
         password: passwordSignup,
-        repeatPassword,
     }
 
     const handleSignup = (e: React.FormEvent<HTMLFormElement>) => {
         e.preventDefault();
-        dispatch(loginUser(signupUserData))
+        dispatch(signupUser(signupUserData))
     }
 
     return (
@@ -53,7 +52,7 @@ const Index = () => {
                    value={repeatPassword}
                    onChange={(e: React.ChangeEvent<HTMLInputElement>) => setRepeatPasswordSignup(e.target.value)}
                 />
-                <button type="submit">Войти</button>
+                <button type="submit">Зарегистрироваться</button>
             </form>
         </div>
     );

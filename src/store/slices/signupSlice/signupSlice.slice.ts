@@ -9,11 +9,11 @@ const initialState: IFetch = {
     errorText: ''
 }
 
-const loginSlice = createSlice({
-    name: 'login',
+const signupSlice = createSlice({
+    name: 'signup',
     initialState,
     reducers: {
-        loginFetch(state) {
+        signupFetch(state) {
             state.loading = true;
             state.success = false;
             state.successText = '';
@@ -21,14 +21,14 @@ const loginSlice = createSlice({
             state.errorText = '';
         },
 
-        loginSuccess(state) {
+        signupSuccess(state) {
             state.loading = false;
             state.success = true;
-            state.successText = 'Добро пожаловать';
+            state.successText = 'Регистрация прошла успешно';
             state.error = false;
         },
 
-        loginError(state, action?) {
+        signupError(state, action) {
             state.loading = false;
             state.success = false;
             state.error = true;
@@ -37,5 +37,5 @@ const loginSlice = createSlice({
     }
 })
 
-export default loginSlice.reducer;
-export const {loginFetch, loginSuccess, loginError} = loginSlice.actions;
+export default signupSlice.reducer;
+export const {signupFetch, signupSuccess, signupError} = signupSlice.actions;

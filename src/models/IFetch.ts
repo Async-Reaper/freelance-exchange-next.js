@@ -1,4 +1,4 @@
-export interface ILoginSlice {
+export interface IFetch {
     loading: boolean
     success: boolean;
     successText: string

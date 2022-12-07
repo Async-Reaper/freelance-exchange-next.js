@@ -10,6 +10,7 @@ const Index = () => {
     const [age, setAge] = useState<number>(0)
     const [passwordSignup, setPasswordSignup] = useState<string>('');
     const [repeatPassword, setRepeatPasswordSignup] = useState<string>('')
+    const [roleUser, setRoleUser] = useState<string>('buyer')
     const dispatch = useTypeDispatch();
 
     const signupUserData: ISignup = {
@@ -18,6 +19,7 @@ const Index = () => {
         surname,
         age,
         password: passwordSignup,
+        roleUser
     }
 
     const handleSignup = (e: React.FormEvent<HTMLFormElement>) => {

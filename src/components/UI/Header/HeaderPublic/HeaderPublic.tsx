@@ -1,11 +1,19 @@
-import Link from "next/link";
+import {Button, Navbar} from "@nextui-org/react";
+import {useRouter} from "next/router";
 
 const HeaderPublic = () => {
+    const router = useRouter();
     return (
-        <div>
-            <Link href={'/login'}>Войти</Link>
-            <Link href={'/signup'}>Зарегистрироваться</Link>
-        </div>
+        <Navbar.Content>
+            <Button light color="primary" auto onClick={() => router.push('/login')}>
+                Войти
+            </Button>
+            <Navbar.Item>
+                <Button bordered color="error" auto onClick={() => router.push('/signup')}>
+                    Зарегистрироваться
+                </Button>
+            </Navbar.Item>
+        </Navbar.Content>
     );
 };
 

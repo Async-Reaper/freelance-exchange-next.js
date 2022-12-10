@@ -1,6 +1,9 @@
-.OrderItem {
-    max-width: 400px;
-    background: grey;
-    padding: 20px;
-    margin: 0 0 20px;
+.OrderTitle {
+    line-height: 27px;
+    font-size: 21px;
+}
+
+.OrderText {
+    font-size: 18px;
+    line-height: 30px;
 }

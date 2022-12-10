@@ -13,8 +13,8 @@ const MainContainer: NextPage<IMainContainerTypes> = ({ children, keywords }) =>
                 <meta name="keywords" content={"freelance, remote-work, first-project-next" + keywords}/>
                 <link rel="icon" href="/public/favicon.ico" />
             </Head>
+            <HeaderAll />
             <div className={styles.MainContainer}>
-                <HeaderAll />
                 {children}
             </div>
 

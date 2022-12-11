@@ -9,8 +9,7 @@ export const loginUser = (data: ILogin) => {
         const auth = getAuth();
         await signInWithEmailAndPassword(auth, data.email, data.password)
             .then((user) => {
-                localStorage.setItem('email', JSON.stringify(user.user.email) || '')
-                localStorage.setItem('uid', user.user.uid)
+                document.cookie = `email=${user.user.email};uid=${user.user.uid}`;
                 dispatch(loginSuccess())
             })
             .catch((error) => {

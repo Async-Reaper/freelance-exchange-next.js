@@ -5,9 +5,11 @@ const HeaderPublic = () => {
     const router = useRouter();
     return (
         <Navbar.Content>
-            <Button light color="primary" auto onClick={() => router.push('/login')}>
-                Войти
-            </Button>
+            <Navbar.Item>
+                <Button light color="primary" auto onClick={() => router.push('/login')}>
+                    Войти
+                </Button>
+            </Navbar.Item>
             <Navbar.Item>
                 <Button bordered color="error" auto onClick={() => router.push('/signup')}>
                     Зарегистрироваться

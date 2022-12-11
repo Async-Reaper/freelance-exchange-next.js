@@ -1,12 +1,17 @@
 import {createSlice} from "@reduxjs/toolkit";
 import {IFetch} from "../../../models/IFetch";
 
-const initialState: IFetch = {
+interface ILogin extends IFetch {
+    loginStatus: boolean;
+}
+
+const initialState: ILogin = {
     loading: false,
     success: false,
     successText: '',
     error: false,
-    errorText: ''
+    errorText: '',
+    loginStatus: false
 }
 
 const loginSlice = createSlice({
@@ -26,6 +31,7 @@ const loginSlice = createSlice({
             state.success = true;
             state.successText = 'Добро пожаловать';
             state.error = false;
+            state.loginStatus = true;
         },
 
         loginError(state, action?) {
@@ -34,8 +40,12 @@ const loginSlice = createSlice({
             state.error = true;
             state.errorText = action.payload ? action.payload : 'Произошла ошибка, повторите попытку позже';
         },
+
+        setLoginStatus(state, action) {
+            state.loginStatus = action.payload;
+        }
     }
 })
 
 export default loginSlice.reducer;
-export const {loginFetch, loginSuccess, loginError} = loginSlice.actions;
+export const {loginFetch, loginSuccess, loginError, setLoginStatus} = loginSlice.actions;

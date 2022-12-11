@@ -4,7 +4,7 @@ import {ISignup} from "../../../models/ISignup";
 import {signupUser} from "../../../services/api/signupUser";
 import FormTemplate from "../../template/formTemplate/FormTemplate";
 import InputUI from "../../UI/input/InputUI";
-import {Button, FormElement, Input, Spacer} from "@nextui-org/react";
+import {Button, FormElement, Input, Radio, Spacer} from "@nextui-org/react";
 
 const SignupForm = () => {
     const [emailSignup, setEmailSignup] = useState<string>('');
@@ -76,7 +76,12 @@ const SignupForm = () => {
                 value={repeatPassword}
                 onChange={(e: ChangeEvent<FormElement>) => setRepeatPasswordSignup(e.target.value)}
             />
-            <Spacer y={2} />
+            <Spacer y={1} />
+            <Radio.Group orientation="horizontal" defaultValue={roleUser}>
+                <Radio value="buyer" onClick={() => setRoleUser('buyer')} size="sm" color="error">Я продавец</Radio>
+                <Radio value="seller" onClick={() => setRoleUser('seller')} size="sm" color="error">Я заказчик</Radio>
+            </Radio.Group>
+            <Spacer y={1} />
             <Button shadow color="error" type="submit">Зарегистрироваться</Button>
         </FormTemplate>
     );

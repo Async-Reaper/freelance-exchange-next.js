@@ -6,12 +6,12 @@ const HeaderPublic = () => {
     return (
         <Navbar.Content>
             <Navbar.Item>
-                <Button light color="primary" auto onClick={() => router.push('/login')}>
+                <Button light color="primary" auto onPress={() => router.push('/login')}>
                     Войти
                 </Button>
             </Navbar.Item>
             <Navbar.Item>
-                <Button bordered color="error" auto onClick={() => router.push('/signup')}>
+                <Button bordered color="error" auto onPress={() => router.push('/signup')}>
                     Зарегистрироваться
                 </Button>
             </Navbar.Item>

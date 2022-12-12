@@ -3,6 +3,9 @@ import {AppDispatch} from "../../store/store";
 import {loginError, loginFetch, loginSuccess, setLoginStatus} from "../../store/slices/loginSlice/loginSlice";
 import {getAuth, signInWithEmailAndPassword} from "@firebase/auth";
 import setCookie from "../../utils/cookie/setCookie";
+import {doc, getDoc} from "@firebase/firestore";
+import {db} from "../../firebase";
+import getCookie from "../../utils/cookie/getCookie";
 
 export const loginUser = (data: ILogin) => {
     return async (dispatch: AppDispatch) => {
@@ -21,6 +24,7 @@ export const loginUser = (data: ILogin) => {
                 const errorMessage = error.message;
                 dispatch(loginError(errorMessage))
             });
+
 
     }
 }

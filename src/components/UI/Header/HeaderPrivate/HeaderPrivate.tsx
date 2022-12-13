@@ -5,6 +5,7 @@ import {useTypeDispatch} from "../../../../hooks/useTypeDispatch";
 import {setLoginStatus} from "../../../../store/slices/loginSlice/loginSlice";
 import {getUserDataHeader} from "../../../../services/api/getUserDataHeader";
 import getCookie from "../../../../utils/cookie/getCookie";
+import setCookie from "../../../../utils/cookie/setCookie";
 
 export default function HeaderPrivate () {
     const dispatch = useTypeDispatch();
@@ -17,6 +18,10 @@ export default function HeaderPrivate () {
     const signout = () => {
         deleteCookie('token');
         deleteCookie('uid');
+        deleteCookie('firstname');
+        deleteCookie('surname');
+        deleteCookie('roleUser');
+        deleteCookie('age')
         dispatch(setLoginStatus(false))
     }
 

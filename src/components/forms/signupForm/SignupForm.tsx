@@ -8,7 +8,7 @@ import {Button, FormElement, Input, Radio, Spacer} from "@nextui-org/react";
 
 const SignupForm = () => {
     const [emailSignup, setEmailSignup] = useState<string>('');
-    const [name, setName] = useState<string>('')
+    const [firstname, setFirstname] = useState<string>('')
     const [surname, setSurname] = useState<string>('')
     const [age, setAge] = useState<number>(0)
     const [passwordSignup, setPasswordSignup] = useState<string>('');
@@ -18,7 +18,7 @@ const SignupForm = () => {
 
     const signupUserData: ISignup = {
         email: emailSignup,
-        name,
+        firstname,
         surname,
         age,
         password: passwordSignup,
@@ -42,8 +42,8 @@ const SignupForm = () => {
                 bordered
                 labelPlaceholder="Имя"
                 color="error"
-                value={name}
-                onChange={(e: ChangeEvent<FormElement>) => setName(e.target.value)}
+                value={firstname}
+                onChange={(e: ChangeEvent<FormElement>) => setFirstname(e.target.value)}
             />
             <InputUI
                 bordered

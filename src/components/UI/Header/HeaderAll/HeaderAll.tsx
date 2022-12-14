@@ -16,6 +16,7 @@ const HeaderAll = () => {
         getCookie("token") ? dispatch(setLoginStatus(true)) : setLoginStatus(false);
     }, [loginStatus])
 
+
     return (
         <>
             <Navbar isCompact isBordered variant="sticky">

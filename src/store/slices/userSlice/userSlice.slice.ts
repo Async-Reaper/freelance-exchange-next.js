@@ -1,19 +1,20 @@
 import {createSlice} from "@reduxjs/toolkit";
 import {IFetch} from "../../../models/IFetch";
 
+
 const initialState: IFetch = {
     loading: false,
     success: false,
     successText: '',
     error: false,
-    errorText: ''
+    errorText: '',
 }
 
-const signupSlice = createSlice({
-    name: 'signup',
+const userSlice = createSlice({
+    name: 'user',
     initialState,
     reducers: {
-        signupFetch(state) {
+        getUserDataFetch(state) {
             state.loading = true;
             state.success = false;
             state.successText = '';
@@ -21,14 +22,14 @@ const signupSlice = createSlice({
             state.errorText = '';
         },
 
-        signupSuccess(state) {
+        getUserDataSuccess(state) {
             state.loading = false;
             state.success = true;
-            state.successText = 'Регистрация прошла успешно';
+            state.successText = '';
             state.error = false;
         },
 
-        signupError(state, action?) {
+        getUserDataError(state, action) {
             state.loading = false;
             state.success = false;
             state.error = true;
@@ -37,5 +38,5 @@ const signupSlice = createSlice({
     }
 })
 
-export default signupSlice.reducer;
-export const {signupFetch, signupSuccess, signupError} = signupSlice.actions;
+export default userSlice.reducer;
+export const {getUserDataFetch, getUserDataSuccess, getUserDataError} = userSlice.actions

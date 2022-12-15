@@ -1,10 +1,19 @@
-import React from 'react';
+import React, {useEffect, useState} from 'react';
 import {NextPage} from "next";
 import {IOrderItemTypes} from "./OrderItem.types";
 import styles from "./OrderItem.module.css"
-import {Button, Card, Col, Row, Spacer, User} from "@nextui-org/react";
+import {Button, Card, Col, Container, Spacer, User} from "@nextui-org/react";
+import getCookie from "../../../utils/cookie/getCookie";
 
 const OrderItem: NextPage<IOrderItemTypes> = ({order}) => {
+    const [showButton, setShowButton] = useState<boolean>(false);
+
+    useEffect(() => {
+        if (getCookie('roleUser')) {
+            getCookie('roleUser') === 'seller' && setShowButton(true);
+        }
+    }, [])
+
     return (
     <>
         <Card
@@ -18,18 +27,18 @@ const OrderItem: NextPage<IOrderItemTypes> = ({order}) => {
                         name={order.creator}
                         size="xs"
                     />
-                    <h1 className={styles.OrderTitle}>{order.name}</h1>
                 </Col>
             </Card.Header>
             <Card.Body>
-                <span className={styles.OrderText}>{order.description}</span>
-                <Row justify="space-between" align="center">
+                <Container display="flex" direction="column">
+                    <h1 className={styles.OrderTitle}>{order.name}</h1>
+                    <span className={styles.OrderText}>{order.description}</span>
                     <span className={styles.OrderText}>Бюджет: {order.price} ₽</span>
-                    <span className={styles.OrderText}>Срок завершения: {order.date_finish}</span>
-                </Row>
+                    <span className={styles.OrderText}>Срок завершения: {order.date_finish.replace(/T/i, ' ')}</span>
+                </Container>
             </Card.Body>
             <Card.Footer>
-                <Button color="success">Открыть</Button>
+                {showButton && <Button color="success">Откликнуться</Button>}
             </Card.Footer>
         </Card>
         <Spacer y={2} />

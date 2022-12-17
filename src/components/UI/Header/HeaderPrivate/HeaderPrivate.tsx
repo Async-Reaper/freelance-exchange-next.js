@@ -6,7 +6,6 @@ import {setLoginStatus} from "../../../../store/slices/loginSlice/loginSlice";
 import {getUserDataHeader} from "../../../../services/api/getUserDataHeader";
 import getCookie from "../../../../utils/cookie/getCookie";
 import {useRouter} from "next/router";
-import Link from "next/link";
 import ModalWindowCreateOrder from "../../modalWindows/modalWindowCreateOrder/ModalWindowCreateOrder";
 
 export default function HeaderPrivate () {
@@ -16,7 +15,7 @@ export default function HeaderPrivate () {
     const [surname, setSurname] = useState<string>('');
     const [visibleModalCreateOrder, setVisibleModalCreateOrder] = useState<boolean>(false);
 
-    useMemo(() => {
+    useEffect(() => {
         dispatch(getUserDataHeader())
         setFirstname(String(getCookie('firstname')));
         setSurname(String(getCookie('surname')));
@@ -36,24 +35,7 @@ export default function HeaderPrivate () {
         <>
             <Navbar.Content>
                 <Navbar.Item>
-                    <Dropdown>
-                        <Dropdown.Button flat>Заказы</Dropdown.Button>
-                        <Dropdown.Menu aria-label="Static Actions">
-                            <Dropdown.Item key="orders">
-                                <Link href={'/my_orders'}>
-                                    Мои заказы
-                                </Link>
-                            </Dropdown.Item>
-                            <Dropdown.Item key="responses to orders">
-                                <Link href={'/responses_orders'}>
-                                    Отклики на заказы
-                                </Link>
-                            </Dropdown.Item>
-                            <Dropdown.Item key="create order">
-                                <Button light color="primary" auto onPress={() => setVisibleModalCreateOrder(true)}>Создать заказ</Button>
-                            </Dropdown.Item>
-                        </Dropdown.Menu>
-                    </Dropdown>
+                    <Button light color="primary" auto onPress={() => setVisibleModalCreateOrder(true)}>Создать заказ</Button>
                 </Navbar.Item>
                 <Navbar.Item>
                     <User

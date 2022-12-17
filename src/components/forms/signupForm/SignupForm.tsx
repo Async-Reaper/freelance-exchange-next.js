@@ -13,7 +13,7 @@ const SignupForm = () => {
     const [age, setAge] = useState<number>(0)
     const [passwordSignup, setPasswordSignup] = useState<string>('');
     const [repeatPassword, setRepeatPasswordSignup] = useState<string>('')
-    const [roleUser, setRoleUser] = useState<string>('buyer')
+    const [roleUser, setRoleUser] = useState<string>('seller')
     const dispatch = useTypeDispatch();
 
     const signupUserData: ISignup = {
@@ -78,8 +78,8 @@ const SignupForm = () => {
             />
             <Spacer y={1} />
             <Radio.Group orientation="horizontal" defaultValue={roleUser}>
-                <Radio value="buyer" onClick={() => setRoleUser('buyer')} size="sm" color="error">Я продавец</Radio>
-                <Radio value="seller" onClick={() => setRoleUser('seller')} size="sm" color="error">Я заказчик</Radio>
+                <Radio value="seller" onClick={() => setRoleUser('seller')} size="sm" color="error">Я продавец</Radio>
+                <Radio value="buyer" onClick={() => setRoleUser('buyer')} size="sm" color="error">Я заказчик</Radio>
             </Radio.Group>
             <Spacer y={1} />
             <Button shadow color="error" type="submit">Зарегистрироваться</Button>

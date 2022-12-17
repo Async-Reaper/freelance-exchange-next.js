@@ -4,9 +4,11 @@ import {IOrderItemTypes} from "./OrderItem.types";
 import styles from "./OrderItem.module.css"
 import {Button, Card, Col, Container, Spacer, User} from "@nextui-org/react";
 import getCookie from "../../../utils/cookie/getCookie";
+import ModalWindowResponseOrder from "../../UI/modalWindows/modalWindowResponseOrder/ModalWindowResponseOrder";
 
 const OrderItem: NextPage<IOrderItemTypes> = ({order}) => {
     const [showButton, setShowButton] = useState<boolean>(false);
+    const [visibleModalCreateOrderResponse, setVisibleModalCreateOrderResponse] = useState<boolean>(false);
 
     useEffect(() => {
         if (getCookie('roleUser')) {
@@ -38,10 +40,11 @@ const OrderItem: NextPage<IOrderItemTypes> = ({order}) => {
                 </Container>
             </Card.Body>
             <Card.Footer>
-                {showButton && <Button color="success">Откликнуться</Button>}
+                {showButton && <Button color="success" onPress={() => setVisibleModalCreateOrderResponse(true)}>Откликнуться</Button>}
             </Card.Footer>
         </Card>
         <Spacer y={2} />
+        <ModalWindowResponseOrder visible={visibleModalCreateOrderResponse} setVisible={setVisibleModalCreateOrderResponse} orderId={order.id}/>
     </>
     );
 };

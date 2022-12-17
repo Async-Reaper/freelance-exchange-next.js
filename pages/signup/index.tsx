@@ -9,7 +9,7 @@ const Index = () => {
 
     const router = useRouter()
     useEffect(() => {
-        success && router.push('/login')
+        // success && router.push('/login')
     })
     return (
         <MainContainer>

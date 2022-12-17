@@ -14,7 +14,8 @@ const ModalWindowCreateOrder: NextPage<IModalWindowCreateOrder> = ({visible, set
     const [dateFinish, setDateFinish] = useState<string>('')
 
     const orderData: IOrder ={
-        id: Date.now(),
+        id: String(Date.now()),
+        creatorId: String(getCookie('uid')),
         name,
         description,
         creator: `${getCookie('firstname')} ${getCookie('surname')}`,
@@ -23,7 +24,7 @@ const ModalWindowCreateOrder: NextPage<IModalWindowCreateOrder> = ({visible, set
         date_create: getDate()
     }
 
-    const handleCreateForm = useCallback(() => {
+    const handleCreateOrder = useCallback(() => {
         createOrder(orderData);
         setVisible(false)
     }, [orderData])
@@ -81,7 +82,7 @@ const ModalWindowCreateOrder: NextPage<IModalWindowCreateOrder> = ({visible, set
                 />
             </Modal.Body>
             <Modal.Footer>
-                <Button auto flat onPress={handleCreateForm}>
+                <Button auto flat onPress={handleCreateOrder}>
                     Создать заказ
                 </Button>
             </Modal.Footer>

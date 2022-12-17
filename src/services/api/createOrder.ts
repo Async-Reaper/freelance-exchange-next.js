@@ -1,10 +1,10 @@
 import {IOrder} from "../../models/IOrder";
-import {addDoc, collection} from "@firebase/firestore";
+import {addDoc, collection, doc, setDoc} from "@firebase/firestore";
 import {db} from "../../firebase";
 
 export const createOrder = async (data: IOrder) => {
     try {
-        const docRef = await addDoc(collection(db, "orders"), data);
+        await setDoc(doc(db, "orders", String(data.id)), data);
     } catch (e) {
         console.log(e)
     }

@@ -7,6 +7,7 @@ import {getUserDataHeader} from "../../../../services/api/getUserDataHeader";
 import getCookie from "../../../../utils/cookie/getCookie";
 import {useRouter} from "next/router";
 import ModalWindowCreateOrder from "../../modalWindows/modalWindowCreateOrder/ModalWindowCreateOrder";
+import DropdownBuyer from "../../DropdownMenuHeader/DropdownBuyer/DropdownBuyer";
 
 export default function HeaderPrivate () {
     const dispatch = useTypeDispatch();
